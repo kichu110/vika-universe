@@ -1,4 +1,3 @@
-
 const map = L.map('map').setView([20, 0], 2);
 
 L.tileLayer(
@@ -9,14 +8,20 @@ L.tileLayer(
 ).addTo(map);
 
 function loadSheet() {
+
     Tabletop.init({
+
         key: SHEET_URL,
+
         simpleSheet: true,
+
         callback: showFans
+
     });
 }
 
 function showFans(data) {
+
     const cities = new Set();
     const countries = new Set();
 
@@ -24,9 +29,13 @@ function showFans(data) {
 
     data.forEach(row => {
 
-        const status = (row["Status"] || "").toLowerCase();
+        const status =
+            (row["Status"] || "").trim().toLowerCase();
 
-        if (status && status !== "added" && status !== "approved") {
+        if (
+            status !== "added" &&
+            status !== "approved"
+        ) {
             return;
         }
 
@@ -42,7 +51,8 @@ function showFans(data) {
         cities.add(row["City"]);
         countries.add(row["Country"]);
 
-        const username = row["Instagram Username"] || "Anonymous";
+        const username =
+            row["Instagram Username"] || "Anonymous";
 
         const popup = `
             <b>${username}</b><br>
@@ -50,12 +60,19 @@ function showFans(data) {
             ✨ ${row["Favourite ViKa Moment"] || ""}
         `;
 
-        L.marker([lat, lng]).addTo(map).bindPopup(popup);
+        L.marker([lat, lng])
+            .addTo(map)
+            .bindPopup(popup);
     });
 
-    document.getElementById("fans").textContent = totalFans;
-    document.getElementById("cities").textContent = cities.size;
-    document.getElementById("countries").textContent = countries.size;
+    document.getElementById("fans").textContent =
+        totalFans;
+
+    document.getElementById("cities").textContent =
+        cities.size;
+
+    document.getElementById("countries").textContent =
+        countries.size;
 }
 
 loadSheet();
