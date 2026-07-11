@@ -1,78 +1,74 @@
-const map = L.map('map').setView([20, 0], 2);
+const map = L.map("map").setView([20, 0], 2);
 
 L.tileLayer(
-    'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-    {
-        attribution: '&copy; OpenStreetMap contributors'
-    }
+  "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+  {
+    attribution: "&copy; OpenStreetMap contributors"
+  }
 ).addTo(map);
 
-function loadSheet() {
+const SHEET_ID = "1Z1kvIV2MKnqhfMjbn5B3i6ZcDN7Q5MIRKngYGNaKNF4";
 
-    Tabletop.init({
+const url =
+  `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json`;
 
-        key: SHEET_URL,
+fetch(url)
+  .then((res) => res.text())
+  .then((text) => {
 
-        simpleSheet: true,
+    const json = JSON.parse(
+      text.substring(47).slice(0, -2)
+    );
 
-        callback: showFans
+    const rows = json.table.rows;
 
-    });
-}
-
-function showFans(data) {
-
+    let fans = 0;
     const cities = new Set();
     const countries = new Set();
 
-    let totalFans = 0;
+    rows.forEach((row) => {
 
-    data.forEach(row => {
+      const status =
+        (row.c[8]?.v || "").toString().trim().toLowerCase();
 
-        const status =
-            (row["Status"] || "").trim().toLowerCase();
+      if (
+        status !== "added" &&
+        status !== "approved"
+      ) {
+        return;
+      }
 
-        if (
-            status !== "added" &&
-            status !== "approved"
-        ) {
-            return;
-        }
+      const lat = parseFloat(row.c[6]?.v);
+      const lng = parseFloat(row.c[7]?.v);
 
-        const lat = parseFloat(row["Latitude"]);
-        const lng = parseFloat(row["Longitude"]);
+      if (isNaN(lat) || isNaN(lng)) {
+        return;
+      }
 
-        if (isNaN(lat) || isNaN(lng)) {
-            return;
-        }
+      fans++;
 
-        totalFans++;
+      const city = row.c[2]?.v || "";
+      const country = row.c[3]?.v || "";
+      const username = row.c[1]?.v || "Anonymous";
+      const moment = row.c[4]?.v || "";
 
-        cities.add(row["City"]);
-        countries.add(row["Country"]);
+      cities.add(city);
+      countries.add(country);
 
-        const username =
-            row["Instagram Username"] || "Anonymous";
-
-        const popup = `
-            <b>${username}</b><br>
-            ${row["City"]}, ${row["Country"]}<br>
-            ✨ ${row["Favourite ViKa Moment"] || ""}
-        `;
-
-        L.marker([lat, lng])
-            .addTo(map)
-            .bindPopup(popup);
+      L.marker([lat, lng])
+        .addTo(map)
+        .bindPopup(`
+          <b>${username}</b><br>
+          ${city}, ${country}<br>
+          ✨ ${moment}
+        `);
     });
 
-    document.getElementById("fans").textContent =
-        totalFans;
-
-    document.getElementById("cities").textContent =
-        cities.size;
-
-    document.getElementById("countries").textContent =
-        countries.size;
-}
-
-loadSheet();
+    document.getElementById("fans").textContent = fans;
+    document.getElementById("cities").textContent = cities.size;
+    document.getElementById("countries").textContent = countries.size;
+  })
+  .catch((err) => {
+    console.error(err);
+    alert("Sheet loading failed");
+  });
