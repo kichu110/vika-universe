@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ViKa Universe</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="stylesheet"
+          href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/tabletop@1.6.0/tabletop.min.js"></script>
+</head>
+<body>
+
+    <header>
+        <h1>🌍 ViKa Universe</h1>
+        <p>One Fandom, Many Places ✨</p>
+    </header>
+
+    <section class="stats">
+        <div class="card">
+            <h2 id="fans">0</h2>
+            <p>Fans</p>
+        </div>
+
+        <div class="card">
+            <h2 id="cities">0</h2>
+            <p>Cities</p>
+        </div>
+
+        <div class="card">
+            <h2 id="countries">0</h2>
+            <p>Countries</p>
+        </div>
+    </section>
+
+    <div id="map"></div>
+
+    <footer>
+        Built by the ViKa fandom 💙
+    </footer>
+
+    <script>
+        const SHEET_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQdkzu26dcxxY6T5nOmP0VIYPI0d_HQXj_Dgj-yXRfbFCuVCRif5GPUz5guKr2cijmAz7d3c2yicPiz/pubhtml";
+    </script>
+
+    <script src="script.js"></script>
+
+</body>
+</html>

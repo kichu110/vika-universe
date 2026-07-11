@@ -1,0 +1,36 @@
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f7f7f7;
+    text-align: center;
+}
+
+header {
+    padding: 24px;
+}
+
+.stats {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 16px;
+}
+
+.card {
+    background: white;
+    padding: 16px;
+    border-radius: 12px;
+    min-width: 120px;
+}
+
+#map {
+    height: 75vh;
+    margin: 16px;
+    border-radius: 12px;
+}
+
+footer {
+    padding: 20px;
+}
