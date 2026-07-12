@@ -34,3 +34,22 @@ header {
 footer {
     padding: 20px;
 }
+.gallery-section {
+    padding: 30px 20px;
+    text-align: center;
+}
+
+.gallery-section h2 {
+    margin-bottom: 20px;
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 15px;
+}
+
+.gallery img {
+    width: 100%;
+    border-radius: 15px;
+}
