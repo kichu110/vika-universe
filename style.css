@@ -3,60 +3,125 @@ body {
     margin: 0;
     padding: 0;
 
-    background-image: url(./"images/03_vika_stage_romance_anime.png");
+    background-image: url("./images/03_vika_stage_romance_anime.png");
 
     background-size: cover;
-
     background-position: center;
-
     background-attachment: fixed;
-
     background-repeat: no-repeat;
 }
+
+/* Header */
+
 header {
-    padding: 24px;
+    text-align: center;
+    padding: 30px 20px;
+
+    background: rgba(0, 0, 0, 0.45);
+    backdrop-filter: blur(10px);
+
+    border-radius: 20px;
+    margin: 20px;
 }
+
+header h1 {
+    color: #ffffff;
+    font-size: 42px;
+    font-weight: bold;
+
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+
+    margin-bottom: 10px;
+}
+
+header p {
+    color: #f5f5f5;
+    font-size: 18px;
+
+    text-shadow: 0 0 8px rgba(0, 0, 0, 0.7);
+
+    margin: 0;
+}
+
+/* Stats cards */
 
 .stats {
     display: flex;
     justify-content: center;
     gap: 16px;
     flex-wrap: wrap;
+
     margin-bottom: 16px;
 }
 
 .card {
-    background: white;
+    background: rgba(255, 255, 255, 0.9);
+
     padding: 16px;
+
     border-radius: 12px;
+
     min-width: 120px;
+
+    text-align: center;
+
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
-#map {
-    height: 75vh;
-    margin: 16px;
-    border-radius: 12px;
-}
+/* Gallery section */
 
-footer {
-    padding: 20px;
-}
 .gallery-section {
     padding: 30px 20px;
+
     text-align: center;
 }
 
 .gallery-section h2 {
+    color: white;
+
     margin-bottom: 20px;
+
+    text-shadow: 0 0 8px rgba(0, 0, 0, 0.8);
 }
 
 .gallery {
     display: grid;
+
     grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+
     gap: 15px;
 }
 
 .gallery img {
     width: 100%;
+
     border-radius: 15px;
+
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+}
+
+/* Map */
+
+#map {
+    height: 75vh;
+
+    margin: 16px;
+
+    border-radius: 12px;
+
+    overflow: hidden;
+
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Footer */
+
+footer {
+    color: white;
+
+    text-align: center;
+
+    padding: 20px;
+
+    text-shadow: 0 0 8px rgba(0, 0, 0, 0.8);
 }
