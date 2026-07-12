@@ -1,9 +1,17 @@
-
 body {
-    margin: 0;
     font-family: Arial, sans-serif;
-    background: #f7f7f7;
-    text-align: center;
+    margin: 0;
+    padding: 0;
+
+    background-image: url("images/manifesting.jpg");
+
+    background-size: cover;
+
+    background-position: center;
+
+    background-attachment: fixed;
+
+    background-repeat: no-repeat;
 }
 
 header {
