@@ -4,6 +4,7 @@ body {
     padding: 0;
 
     background-image: url("images/03_vika_stage_romance_anime.png");
+
     background-size: cover;
 
     background-position: center;
@@ -12,7 +13,6 @@ body {
 
     background-repeat: no-repeat;
 }
-
 header {
     padding: 24px;
 }
