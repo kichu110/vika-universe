@@ -54,11 +54,20 @@ fetch(
       cities.add(city);
       countries.add(country);
 
-      L.marker([lat, lng])
-        .addTo(map)
-        .bindPopup(
-          `<b>${username}</b><br>${city}, ${country}<br>✨ ${moment}`
-        );
+      const heartIcon = L.divIcon({
+  className: "heart-marker",
+  html: "❤️",
+  iconSize: [30, 30],
+  iconAnchor: [15, 30]
+});
+
+L.marker([lat, lng], {
+  icon: heartIcon
+})
+  .addTo(map)
+  .bindPopup(
+    `<b>${username}</b><br>${city}, ${country}<br>✨ ${moment}`
+  );
     });
 
     document.getElementById("fans").textContent = totalFans;
