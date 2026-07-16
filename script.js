@@ -9,6 +9,13 @@ L.tileLayer(
 
 const SHEET_ID = "1Z1kvIV2MKnqhfMjbn5B3i6ZcDN7Q5MIRKngYGNaKNF4";
 
+const heartIcon = L.divIcon({
+  className: "heart-marker",
+  html: "❤️",
+  iconSize: [30, 30],
+  iconAnchor: [15, 30],
+});
+
 fetch(
   `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json`
 )
@@ -24,8 +31,11 @@ fetch(
     const rows = json.table.rows;
 
     let totalFans = 0;
+
     const cities = new Set();
     const countries = new Set();
+
+    const cityGroups = {};
 
     rows.forEach((row) => {
       const status = (row.c[8]?.v || "")
@@ -54,20 +64,31 @@ fetch(
       cities.add(city);
       countries.add(country);
 
-      const heartIcon = L.divIcon({
-  className: "heart-marker",
-  html: "❤️",
-  iconSize: [30, 30],
-  iconAnchor: [15, 30]
-});
+      const key = `${city}, ${country}`;
 
-L.marker([lat, lng], {
-  icon: heartIcon
-})
-  .addTo(map)
-  .bindPopup(
-    `<b>${username}</b><br>${city}, ${country}<br>✨ ${moment}`
-  );
+      if (!cityGroups[key]) {
+        cityGroups[key] = {
+          lat,
+          lng,
+          fans: [],
+        };
+      }
+
+      cityGroups[key].fans.push(
+        `<b>${username}</b><br>✨ ${moment}<br><br>`
+      );
+    });
+
+    Object.keys(cityGroups).forEach((key) => {
+      const place = cityGroups[key];
+
+      L.marker([place.lat, place.lng], {
+        icon: heartIcon,
+      })
+        .addTo(map)
+        .bindPopup(
+          `<h3>${key}</h3>${place.fans.join("")}`
+        );
     });
 
     document.getElementById("fans").textContent = totalFans;
