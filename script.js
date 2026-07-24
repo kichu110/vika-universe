@@ -81,14 +81,15 @@ fetch(
 
     Object.keys(cityGroups).forEach((key) => {
       const place = cityGroups[key];
-
-      L.marker([place.lat, place.lng], {
-        icon: heartIcon,
-      })
-        .addTo(map)
-        .bindPopup(
-          `<h3>${key}</h3>${place.fans.join("")}`
-        );
+L.marker([place.lat, place.lng], {
+    icon: pinIcon,
+})
+.addTo(map)
+.bindPopup(`
+    <h3>${key}</h3>
+    <hr>
+    ${place.fans.join("")}
+`);
     });
 
     document.getElementById("fans").textContent = totalFans;
