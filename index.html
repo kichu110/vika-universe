@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,21 +8,23 @@
 
     <link rel="stylesheet" href="style.css">
 
+    <!-- Leaflet CSS -->
     <link rel="stylesheet"
-        href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+        href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 
+    <!-- Leaflet JS -->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-
-    <script src="https://unpkg.com/tabletop@1.6.0/tabletop.min.js"></script>
 </head>
 
 <body>
 
+    <!-- Header -->
     <header>
         <h1>🌍 ViKa Universe</h1>
         <p>One Fandom, Many Places ✨</p>
     </header>
 
+    <!-- Statistics -->
     <section class="stats">
 
         <div class="card">
@@ -38,50 +41,51 @@
             <h2 id="countries">0</h2>
             <p>Countries</p>
         </div>
-        <section class="countries-section">
-    <h2>🌍 Countries in ViKa Universe</h2>
-    <div id="country-list"></div>
-        </section>
-        
+
     </section>
+
+    <!-- Countries List -->
+    <section class="countries-section">
+        <h2>🌍 Countries in ViKa Universe</h2>
+        <div id="country-list"></div>
+    </section>
+
+    <!-- Gallery -->
     <section class="gallery-section">
 
-    <h2>✨ 11:11 Manifesting ✨</h2>
+        <h2>✨ 11:11 Manifesting ✨</h2>
 
-    <div class="gallery">
+        <div class="gallery">
+            <img src="./images/11_manifesting_new_project_1111.png"
+                alt="11:11 Manifesting">
+        </div>
 
-<img src="./images/11_manifesting_new_project_1111.png" alt="11:11 Manifesting">
+        <h2>✨ ViKa Universe Memories ✨</h2>
 
-    </div>
+        <div class="gallery">
+            <img src="images/07_dream_lovers_season6_winners.png"
+                alt="Dream Lovers Winners">
 
-    <h2>✨ ViKa Universe Memories ✨</h2>
+            <img src="images/13_vika_family_portrait.png"
+                alt="ViKa Family Portrait">
 
-    <div class="gallery">
-
-        <img src="images/07_dream_lovers_season6_winners.png">
-
-        <img src="images/13_vika_family_portrait.png">
-
-        <img src="images/20_vika_with_child_portraits.png">
-
-    </div>
+            <img src="images/20_vika_with_child_portraits.png"
+                alt="ViKa Memories">
+        </div>
 
     </section>
 
+    <!-- Map -->
     <div id="map"></div>
 
+    <!-- Footer -->
     <footer>
-        Built by the ViKa fandom 💙
+        Built with 💙 by the ViKa Fandom
     </footer>
 
-    <script>
-
-        const SHEET_URL =
-            "1Z1kvIV2MKnqhfMjbn5B3i6ZcDN7Q5MIRKngYGNaKNF4";
-
-    </script>
-
+    <!-- Main Script -->
     <script src="script.js"></script>
 
 </body>
+
 </html>
