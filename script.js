@@ -21,6 +21,7 @@ fetch(
 )
   .then((response) => response.text())
   .then((text) => {
+
     const json = JSON.parse(
       text
         .replace(
@@ -40,6 +41,7 @@ fetch(
     const cityGroups = {};
 
     rows.forEach((row) => {
+
       const status = (row.c[8]?.v || "")
         .toString()
         .trim()
@@ -77,58 +79,51 @@ fetch(
       );
     });
 
-    // Add map pins
+    // Add one pin for each city
     Object.keys(cityGroups).forEach((key) => {
+
       const place = cityGroups[key];
 
       L.marker([place.lat, place.lng], {
         icon: pinIcon,
       })
-        .addTo(map)
-        .bindPopup(`
-          <h3>📍 ${key}</h3>
-          <hr>
-          ${place.fans.join("")}
-        `);
+      .addTo(map)
+      .bindPopup(`
+        <h3>📍 ${key}</h3>
+        <hr>
+        ${place.fans.join("")}
+      `);
+
     });
 
-    // Update statistics
+    // Statistics
     document.getElementById("fans").textContent = totalFans;
     document.getElementById("cities").textContent = cities.size;
     document.getElementById("countries").textContent = countries.size;
-// Display countries list
-const countryList = document.getElementById("country-list");
 
-countryList.innerHTML = "";
-
-const sortedCountries = [...countries].sort();
-
-sortedCountries.forEach(country => {
-    const chip = document.createElement("div");
-    chip.className = "country-chip";
-    chip.textContent = "🌍 " + country;
-    countryList.appendChild(chip);
-});
-
-console.log("Countries:", sortedCountries);
-    // Show countries list
+    // Countries list
     const countryList = document.getElementById("country-list");
 
-    countryList.innerHTML = "";
+    if (countryList) {
 
-    const sortedCountries = Array.from(countries).sort();
+      countryList.innerHTML = "";
 
-if (sortedCountries.length === 0) {
-    countryList.innerHTML = "<p>No countries found.</p>";
-} else {
-    sortedCountries.forEach((country) => {
-        countryList.innerHTML += `
-            <div class="country-chip">🌍 ${country}</div>
-        `;
-    });
-}
+      Array.from(countries)
+        .sort()
+        .forEach((country) => {
+
+          const chip = document.createElement("div");
+          chip.className = "country-chip";
+          chip.textContent = "🌍 " + country;
+
+          countryList.appendChild(chip);
+
+        });
+
+    }
+
   })
   .catch((error) => {
     console.error(error);
     alert(error);
-  });
+  });  });
