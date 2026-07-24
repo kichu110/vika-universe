@@ -79,7 +79,7 @@ fetch(
       );
     });
 
-    // Add one pin for each city
+    // Add one marker per city
     Object.keys(cityGroups).forEach((key) => {
 
       const place = cityGroups[key];
@@ -96,15 +96,16 @@ fetch(
 
     });
 
-    // Statistics
+    // Update statistics
     document.getElementById("fans").textContent = totalFans;
     document.getElementById("cities").textContent = cities.size;
     document.getElementById("countries").textContent = countries.size;
 
-    // Countries list
-    const countryList = document.getElementById("country-list");
-
-    if (countryList) {
+  })
+  .catch((error) => {
+    console.error(error);
+    alert(error);
+  });    if (countryList) {
 
       countryList.innerHTML = "";
 
