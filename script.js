@@ -96,7 +96,21 @@ fetch(
     document.getElementById("fans").textContent = totalFans;
     document.getElementById("cities").textContent = cities.size;
     document.getElementById("countries").textContent = countries.size;
+// Display countries list
+const countryList = document.getElementById("country-list");
 
+countryList.innerHTML = "";
+
+const sortedCountries = [...countries].sort();
+
+sortedCountries.forEach(country => {
+    const chip = document.createElement("div");
+    chip.className = "country-chip";
+    chip.textContent = "🌍 " + country;
+    countryList.appendChild(chip);
+});
+
+console.log("Countries:", sortedCountries);
     // Show countries list
     const countryList = document.getElementById("country-list");
 
