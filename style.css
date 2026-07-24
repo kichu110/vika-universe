@@ -1,110 +1,102 @@
 body {
     font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-
-    background: url("https://kichu110.github.io/vika-universe/images/file_0000000067347208a5296b881d3e5a3b.png")
+    background: url("images/file_0000000067347208a5296b881d3e5a3b.png")
         center center / cover no-repeat fixed;
+    color: #fff;
+    margin: 0;
 }
-/* Header */
 
 header {
     text-align: center;
-
     padding: 30px 20px;
-
-    background: rgba(0, 0, 0, 0.45);
-
-    backdrop-filter: blur(10px);
-
-    border-radius: 20px;
-
-    margin: 20px;
+    background: rgba(0, 0, 0, 0.5);
 }
 
 header h1 {
-    color: #FFD700;
-
-    font-size: 42px;
-
-    font-weight: bold;
-
-    text-shadow: 0 0 15px rgba(0, 0, 0, 0.8);
-
+    font-size: 2.8rem;
     margin-bottom: 10px;
 }
 
 header p {
-    color: #FFF8E7;
-
-    font-size: 18px;
-
-    text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
-
-    margin: 0;
+    font-size: 1.2rem;
 }
-
-/* Stats */
 
 .stats {
     display: flex;
-
     justify-content: center;
-
-    gap: 16px;
-
     flex-wrap: wrap;
-
-    margin-bottom: 20px;
+    gap: 20px;
+    padding: 25px;
 }
 
 .card {
     background: rgba(255, 255, 255, 0.9);
-
+    color: #222;
+    width: 180px;
     padding: 20px;
-
-    border-radius: 16px;
-
-    min-width: 130px;
-
+    border-radius: 18px;
     text-align: center;
-
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
 .card h2 {
-    margin: 0;
-
-    font-size: 36px;
-
-    color: #7a1fa2;
+    font-size: 2rem;
+    color: #7b2cbf;
 }
-
-.card p {
-    margin-top: 10px;
-
-    font-size: 20px;
-
-    color: #333;
-}
-
-/* Gallery */
 
 .gallery-section {
-    padding: 30px 20px;
-
+    padding: 20px;
     text-align: center;
 }
 
 .gallery-section h2 {
-    color: #FFD700;
-
-    margin-bottom: 20px;
-
-    text-shadow: 0 0 12px rgba(0, 0, 0, 0.9);
+    margin: 25px 0 15px;
 }
 
 .gallery {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.gallery img {
+    width: 300px;
+    max-width: 90%;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+}
+
+.map-section {
+    padding: 20px;
+}
+
+.map-section h2 {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+#map {
+    width: 90%;
+    height: 600px;
+    margin: 20px auto;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+}
+
+.pin-marker {
+    font-size: 30px;
+    text-align: center;
+    line-height: 30px;
+}
+
+footer {
+    margin-top: 30px;
+    padding: 20px;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.5);
+}.gallery {
     display: grid;
 
     grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
