@@ -102,13 +102,17 @@ fetch(
 
     countryList.innerHTML = "";
 
-    Array.from(countries)
-      .sort()
-      .forEach((country) => {
+    const sortedCountries = Array.from(countries).sort();
+
+if (sortedCountries.length === 0) {
+    countryList.innerHTML = "<p>No countries found.</p>";
+} else {
+    sortedCountries.forEach((country) => {
         countryList.innerHTML += `
-          <div class="country-chip">${country}</div>
+            <div class="country-chip">🌍 ${country}</div>
         `;
-      });
+    });
+}
   })
   .catch((error) => {
     console.error(error);
