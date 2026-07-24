@@ -153,15 +153,16 @@ footer {
 }
 .heart-marker {
     font-size: 28px;
-
     text-align: center;
-
     filter: drop-shadow(
         0 0 8px rgba(255, 0, 0, 0.7)
     );
 }
-.pin-marker {
-    font-size: 30px;
+
+.heart-marker {
+    font-size: 28px;
     text-align: center;
-    line-height: 30px;
+    filter: drop-shadow(
+        0 0 8px rgba(255, 0, 0, 0.7)
+    );
 }
