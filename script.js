@@ -9,11 +9,11 @@ L.tileLayer(
 
 const SHEET_ID = "1Z1kvIV2MKnqhfMjbn5B3i6ZcDN7Q5MIRKngYGNaKNF4";
 
-const heartIcon = L.divIcon({
-  className: "heart-marker",
-  html: "❤️",
-  iconSize: [30, 30],
-  iconAnchor: [15, 30],
+const pinIcon = L.divIcon({
+    className: "pin-marker",
+    html: "📍",
+    iconSize: [30, 30],
+    iconAnchor: [15, 30],
 });
 
 fetch(
