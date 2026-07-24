@@ -1,48 +1,66 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
-    font-family: Arial, sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
     background: url("images/file_0000000067347208a5296b881d3e5a3b.png")
         center center / cover no-repeat fixed;
-    color: #fff;
-    margin: 0;
+    color: #ffffff;
 }
+
+/* Header */
 
 header {
     text-align: center;
-    padding: 30px 20px;
-    background: rgba(0, 0, 0, 0.5);
+    padding: 40px 20px;
+    background: rgba(0, 0, 0, 0.45);
 }
 
 header h1 {
-    font-size: 2.8rem;
+    font-size: 3rem;
     margin-bottom: 10px;
 }
 
 header p {
     font-size: 1.2rem;
+    color: #f2f2f2;
 }
 
+/* Statistics */
+
 .stats {
+    width: 90%;
+    margin: 30px auto;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
     gap: 20px;
-    padding: 25px;
 }
 
 .card {
-    background: rgba(255, 255, 255, 0.9);
-    color: #222;
     width: 180px;
+    background: rgba(255, 255, 255, 0.92);
+    color: #222;
     padding: 20px;
     border-radius: 18px;
     text-align: center;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
 }
 
 .card h2 {
     font-size: 2rem;
     color: #7b2cbf;
+    margin-bottom: 8px;
 }
+
+.card p {
+    font-weight: bold;
+}
+
+/* Gallery */
 
 .gallery-section {
     padding: 20px;
@@ -50,7 +68,7 @@ header p {
 }
 
 .gallery-section h2 {
-    margin: 25px 0 15px;
+    margin: 30px 0 15px;
 }
 
 .gallery {
@@ -61,57 +79,11 @@ header p {
 }
 
 .gallery img {
-    width: 300px;
-    max-width: 90%;
-    border-radius: 15px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
-}
-
-.map-section {
-    padding: 20px;
-}
-
-.map-section h2 {
-    text-align: center;
-    margin-bottom: 15px;
-}
-
-#map {
-    width: 90%;
-    height: 600px;
-    margin: 20px auto;
-    border-radius: 20px;
-    overflow: hidden;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
-}
-
-.pin-marker {
-    font-size: 30px;
-    text-align: center;
-    line-height: 30px;
-}
-
-footer {
-    margin-top: 30px;
-    padding: 20px;
-    text-align: center;
-    background: rgba(0, 0, 0, 0.5);
-}.gallery {
-    display: grid;
-
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-
-    gap: 15px;
-}
-
-.gallery img {
-    width: 100%;
-
+    width: 320px;
+    max-width: 95%;
     border-radius: 18px;
-
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
-
-    transition: transform 0.3s ease;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+    transition: 0.3s;
 }
 
 .gallery img:hover {
@@ -120,56 +92,98 @@ footer {
 
 /* Map */
 
-#map {
-    height: 75vh;
-
-    margin: 16px;
-
-    border-radius: 16px;
-
-    overflow: hidden;
-
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+.map-section {
+    width: 100%;
+    padding: 40px 20px;
 }
 
-/* Footer */
-
-footer {
-    color: #FFF8E7;
-
+.map-section h2 {
     text-align: center;
-
-    padding: 20px;
-
-    text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+    margin-bottom: 20px;
 }
+
+#map {
+    width: 90%;
+    height: 650px;
+    margin: 0 auto;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 3px solid rgba(255,255,255,.2);
+    box-shadow: 0 8px 20px rgba(0,0,0,.35);
+}
+
+/* Leaflet popup */
+
+.leaflet-popup-content {
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.leaflet-popup-content h3 {
+    margin-bottom: 8px;
+}
+
+/* Marker */
+
 .pin-marker {
     font-size: 30px;
     text-align: center;
     line-height: 30px;
 }
-.countries-section {
-    margin: 20px;
-    padding: 20px;
-    background: rgba(255,255,255,0.9);
-    border-radius: 16px;
+
+/* Footer */
+
+footer {
+    margin-top: 40px;
+    padding: 25px;
     text-align: center;
+    background: rgba(0,0,0,.45);
 }
 
-.countries-section h2 {
-    margin-bottom: 15px;
+/* Scrollbar */
+
+::-webkit-scrollbar {
+    width: 10px;
 }
 
-#country-list {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 10px;
+::-webkit-scrollbar-thumb {
+    background: #8a2be2;
+    border-radius: 10px;
 }
 
-.country-chip {
-    padding: 8px 16px;
-    border-radius: 20px;
-    background: #f2f2f2;
-    font-weight: bold;
+::-webkit-scrollbar-track {
+    background: rgba(255,255,255,.15);
+}
+
+/* Mobile */
+
+@media screen and (max-width:768px){
+
+    header h1{
+        font-size:2.2rem;
+    }
+
+    header p{
+        font-size:1rem;
+    }
+
+    .stats{
+        flex-direction:column;
+        align-items:center;
+    }
+
+    .card{
+        width:90%;
+        max-width:300px;
+    }
+
+    .gallery img{
+        width:100%;
+    }
+
+    #map{
+        width:95%;
+        height:500px;
+    }
+
 }
