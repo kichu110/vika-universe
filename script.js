@@ -10,10 +10,10 @@ L.tileLayer(
 const SHEET_ID = "1Z1kvIV2MKnqhfMjbn5B3i6ZcDN7Q5MIRKngYGNaKNF4";
 
 const pinIcon = L.divIcon({
-    className: "pin-marker",
-    html: "📍",
-    iconSize: [30, 30],
-    iconAnchor: [15, 30],
+  className: "pin-marker",
+  html: "📍",
+  iconSize: [30, 30],
+  iconAnchor: [15, 30],
 });
 
 fetch(
@@ -22,10 +22,12 @@ fetch(
   .then((response) => response.text())
   .then((text) => {
     const json = JSON.parse(
-      text.replace(
-        /^\/\*O_o\*\/\s*google\.visualization\.Query\.setResponse\(/,
-        ""
-      ).slice(0, -2)
+      text
+        .replace(
+          /^\/\*O_o\*\/\s*google\.visualization\.Query\.setResponse\(/,
+          ""
+        )
+        .slice(0, -2)
     );
 
     const rows = json.table.rows;
@@ -43,16 +45,12 @@ fetch(
         .trim()
         .toLowerCase();
 
-      if (status !== "added") {
-        return;
-      }
+      if (status !== "added") return;
 
       const lat = row.c[6]?.v;
       const lng = row.c[7]?.v;
 
-      if (lat == null || lng == null) {
-        return;
-      }
+      if (lat == null || lng == null) return;
 
       totalFans++;
 
@@ -79,22 +77,38 @@ fetch(
       );
     });
 
+    // Add map pins
     Object.keys(cityGroups).forEach((key) => {
       const place = cityGroups[key];
-L.marker([place.lat, place.lng], {
-    icon: pinIcon,
-})
-.addTo(map)
-.bindPopup(`
-    <h3>${key}</h3>
-    <hr>
-    ${place.fans.join("")}
-`);
+
+      L.marker([place.lat, place.lng], {
+        icon: pinIcon,
+      })
+        .addTo(map)
+        .bindPopup(`
+          <h3>📍 ${key}</h3>
+          <hr>
+          ${place.fans.join("")}
+        `);
     });
 
+    // Update statistics
     document.getElementById("fans").textContent = totalFans;
     document.getElementById("cities").textContent = cities.size;
     document.getElementById("countries").textContent = countries.size;
+
+    // Show countries list
+    const countryList = document.getElementById("country-list");
+
+    countryList.innerHTML = "";
+
+    Array.from(countries)
+      .sort()
+      .forEach((country) => {
+        countryList.innerHTML += `
+          <div class="country-chip">${country}</div>
+        `;
+      });
   })
   .catch((error) => {
     console.error(error);
