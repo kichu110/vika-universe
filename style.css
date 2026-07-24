@@ -151,18 +151,8 @@ footer {
 
     text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
 }
-.heart-marker {
-    font-size: 28px;
+.pin-marker {
+    font-size: 30px;
     text-align: center;
-    filter: drop-shadow(
-        0 0 8px rgba(255, 0, 0, 0.7)
-    );
-}
-
-.heart-marker {
-    font-size: 28px;
-    text-align: center;
-    filter: drop-shadow(
-        0 0 8px rgba(255, 0, 0, 0.7)
-    );
+    line-height: 30px;
 }
